@@ -77,7 +77,6 @@
 		        	$.each(files, function(i, file) {
 		        		var name = file.name;
 			        	var extension = name.substring(name.lastIndexOf('.') + 1).toLowerCase();
-			        	console.log(extension);
 			        	if (extension !== "gif" && extension !== "png" && extension !== "bmp"
 	                    	&& extension !== "jpeg" && extension !== "jpg") {
 	                		pass = false;
@@ -158,7 +157,6 @@
                         $input = $('<input type="file" multiple/>');
                         $input.on("change", function (e) {
                             files = e.target.files;
-                            console.log("validation result="+validateUploads(files));
                             if(!validateUploads(files)) {
                             	alert(editor.lang.img-upload.validationFail);
 			            		return;

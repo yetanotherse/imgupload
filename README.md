@@ -23,8 +23,7 @@ config.imgUploadConfig = {
 ```
 That's all. Works out of the box once you have correctly configured it. Make sure to set appropriate access permissions on your S3 bucket for upload to work.
 
-Plugin also checks for image dimensions after upload is done and sets image width to 600 if image width is more than than. Currently it's hard-coded (See TBD section)
+Plugin also validates if the uploaded file is an image. It also checks for image dimensions after upload is done and sets image width to 600 if image width is more than than. Currently it's hard-coded (See TBD section)
 
 ### TBD
-* Image validation before upload
 * Make image maxWidth configurable via plugin settings

@@ -72,6 +72,19 @@
 		        	img.src = href;
 		        }
 		        
+		        function validateUploads(files) {
+		        	var pass = true;
+		        	$.each(files, function(i, file) {
+		        		var name = file.name;
+			        	var extension = name.substring(name.lastIndexOf('.') + 1).toLowerCase();
+			        	if (extension !== "gif" && extension !== "png" && extension !== "bmp"
+	                    	&& extension !== "jpeg" && extension !== "jpg") {
+	                		pass = false;
+                		}
+		        	});
+		        	return pass;
+		        }
+		        
 		        function upload(file) {
 		        	count++;
 		            AWS.config.update({accessKeyId: settings.accessKeyId, secretAccessKey: settings.secretAccessKey});
@@ -92,11 +105,16 @@
 		        
                 function dropHandler(e) {
 		            e.preventDefault();
-		            $placeholder.show();
 		            files = e.dataTransfer.files;
-		            $.each(files, function(i, file) {
-		            	upload(file).then(insertImage, orPopError);
-	            	});
+		            if(!validateUploads(files)) {
+                    	alert(editor.lang.img-upload.validationFail);
+	            		return;
+                   	} else {
+			            $placeholder.show();// works for file input without explicit call ???
+			            $.each(files, function(i, file) {
+			            	upload(file).then(insertImage, orPopError);
+		            	});
+	            	}
 	            	$placeholder.text(count + editor.lang.img-upload.uploading).fadeIn();
 		        }
 		        
@@ -130,7 +148,7 @@
                 {
                     label : editor.lang.img-upload.uploadImages,
                     toolbar : 'insert',
-                    command : 'img-upload',
+                    command : 'imgupload',
                     icon : this.path + 'images/icon.png'
                 });
 
@@ -139,9 +157,14 @@
                         $input = $('<input type="file" multiple/>');
                         $input.on("change", function (e) {
                             files = e.target.files;
-                            $.each(files, function(i, file) {
-                                upload(file).then(insertImage, orPopError);
-                            });
+                            if(!validateUploads(files)) {
+                            	alert(editor.lang.img-upload.validationFail);
+			            		return;
+                            } else {
+	                            $.each(files, function(i, file) {
+	                            	upload(file).then(insertImage, orPopError);
+	                            });
+                            }
                             $placeholder.text(count + editor.lang.img-upload.uploading).fadeIn();
                         });
                         $input.click();

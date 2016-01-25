@@ -128,7 +128,7 @@
 
                 editor.ui.addButton( 'ImgUpload',
                 {
-                    label : "ImgUpload",
+                    label : editor.lang.img-upload.uploadImages,
                     toolbar : 'insert',
                     command : 'img-upload',
                     icon : this.path + 'images/icon.png'

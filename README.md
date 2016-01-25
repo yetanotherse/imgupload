@@ -1,10 +1,10 @@
-# imgupload for CKEditor
-CKEditor <strong>imgupload</strong> supports multiple images upload via both drag-n-drop and file input. It uploads files on AWS S3 bucket.
+# img-upload for CKEditor
+CKEditor <strong>img-upload</strong> supports multiple images upload via both drag-n-drop and file input. It uploads files on AWS S3 bucket.
 
 ## Install/Usage
 Add the plugin name to CKEditor's extraPlugins property inside of `config.js`
 ```
-config.extraPlugins = 'imgupload';
+config.extraPlugins = 'img-upload';
 ```
 
 Add the configuration settings in `config.js` after adding the plugin
@@ -25,4 +25,4 @@ Plugin also checks for image dimensions after upload is done and sets image widt
 
 ### TBD
 * Image validation before upload
-* Make image maxWdith configurable via plugin settings
+* Make image maxWidth configurable via plugin settings

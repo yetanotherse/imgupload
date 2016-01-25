@@ -1,5 +1,5 @@
 ( function() {
-    CKEDITOR.plugins.add( 'imgupload',
+    CKEDITOR.plugins.add( 'img-upload',
         {
             lang: ['en'],
             init: function( editor )
@@ -82,7 +82,7 @@
 		                bucket.upload(params, function (err, data) {
 		                	// update file counter
 		                    count--;
-                            $placeholder.text(count + editor.lang.imgupload.uploading).toggle(count != 0);
+                            $placeholder.text(count + editor.lang.img-upload.uploading).toggle(count != 0);
                             // handle success failure
 		                    if (!err) resolve(data.Location);
 		                    else reject(err);
@@ -97,7 +97,7 @@
 		            $.each(files, function(i, file) {
 		            	upload(file).then(insertImage, orPopError);
 	            	});
-	            	$placeholder.text(count + editor.lang.imgupload.uploading).fadeIn();
+	            	$placeholder.text(count + editor.lang.img-upload.uploading).fadeIn();
 		        }
 		        
 		        validateConfig();
@@ -130,11 +130,11 @@
                 {
                     label : "ImgUpload",
                     toolbar : 'insert',
-                    command : 'imgupload',
+                    command : 'img-upload',
                     icon : this.path + 'images/icon.png'
                 });
 
-                editor.addCommand( 'imgupload', {
+                editor.addCommand( 'img-upload', {
                     exec: function(){
                         $input = $('<input type="file" multiple/>');
                         $input.on("change", function (e) {
@@ -142,7 +142,7 @@
                             $.each(files, function(i, file) {
                                 upload(file).then(insertImage, orPopError);
                             });
-                            $placeholder.text(count + editor.lang.imgupload.uploading).fadeIn();
+                            $placeholder.text(count + editor.lang.img-upload.uploading).fadeIn();
                         });
                         $input.click();
                     }

@@ -2,6 +2,8 @@
 CKEditor <strong>img-upload</strong> supports multiple images upload via both drag-n-drop and file input. It uploads files on AWS S3 bucket.
 
 ## Install/Usage
+Download the plugin and copy the downloaded directory under `plugins` folder of CKEditor.
+
 Add the plugin name to CKEditor's extraPlugins property inside of `config.js`
 ```
 config.extraPlugins = 'img-upload';
